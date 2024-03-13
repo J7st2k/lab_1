@@ -60,6 +60,13 @@ void Win::calc()            //сам подсчёт
     if (Ok)
     {
         r=a*a;
+        if (qIsInf(r))
+        {
+            QMessageBox msgBox(QMessageBox::Information, "Возведение в квадрат.", "Введено слишком большое значение.", QMessageBox::Ok);
+            msgBox.exec();
+            inputEdit->clear();
+            return;
+        }
         str.setNum(r);          //r преобразуется в строку и заносится в str
         outputEdit->setText(str);
         inputEdit->setEnabled(false);
@@ -74,5 +81,6 @@ void Win::calc()            //сам подсчёт
         {
             QMessageBox msgBox(QMessageBox::Information, "Возведение в квадрат.", "Введено неверное значение.", QMessageBox::Ok);
             msgBox.exec();
+            inputEdit->clear();
         }
 }
