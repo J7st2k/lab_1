@@ -35,9 +35,9 @@ Win::Win(QWidget *parent):QWidget(parent)
     begin(); //вызываем для первоначальной настройки
 
         //описываем сигналы, соединяем их со слотами
-    connect(exitButton,SIGNAL(clicked(bool)), this, SLOT(close()));     //close прописан в родителе QWidget
-    connect(nextButton,SIGNAL(clicked(bool)), this, SLOT(begin()));
-    connect(inputEdit,SIGNAL(returnPressed()), this, SLOT(calc()));
+    connect(exitButton, &QPushButton::clicked, this, &Win::close);     //close прописан в родителе QWidget
+    connect(nextButton, &QPushButton::clicked, this, &Win::begin);
+    connect(inputEdit, &QLineEdit::returnPressed, this, &Win::calc);
 }
 
 void Win::begin() //слот первоначальной настройки/перенастройки
