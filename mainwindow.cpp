@@ -31,9 +31,9 @@ Win::Win(QWidget *parent):QWidget(parent)
     edit2->setEnabled(false);
 
         // связь сигнала нажатия кнопки и слота закрытия окна
-    connect(calcbutton,SIGNAL(clicked(bool)), edit1, SLOT(add_one()));
-    connect(edit1,SIGNAL(tick_signal()), edit2, SLOT(add_one()));
-    connect(exitbutton,SIGNAL(clicked(bool)), this, SLOT(close()));
+    connect(calcbutton, &QPushButton::clicked, edit1, &Counter::add_one);
+    connect(edit1, &Counter::tick_signal, edit2, &Counter::add_one);
+    connect(exitbutton, &QPushButton::clicked, this, &Win::close);
 }
 
 void Counter::add_one()
